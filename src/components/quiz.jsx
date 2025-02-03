@@ -8,6 +8,7 @@ const Quiz = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [attemptedQuestions, setAttemptedQuestions] = useState(new Set());
   const [questionTimers, setQuestionTimers] = useState([]);
+  const [Loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch("/Questions.json")
@@ -46,6 +47,7 @@ const Quiz = () => {
   }, [attemptedQuestions, questions.length]);
 
   const handleOptionClick = (index) => {
+    setLoading(true);
     if (selectedOption !== null || attemptedQuestions.has(currentQuestionIndex))
       return;
 
@@ -57,7 +59,10 @@ const Quiz = () => {
 
     //setAttemptedQuestions((prev) => new Set([...prev, currentQuestionIndex]));
 
-    setTimeout(() => nextQuestion(), 1000);
+    setTimeout(() => {
+      nextQuestion();
+      setLoading(false);
+    }, 1000);
   };
 
   const nextQuestion = () => {
@@ -103,7 +108,9 @@ const Quiz = () => {
   //     </div>
   //   );
   // }
-
+  const handleProgressClick = (index) => {
+    if (Loading === false) setCurrentQuestionIndex(index);
+  };
   return (
     <div className="flex justify-center items-center h-screen p-10 bg-gray-800">
       {quizCompleted ? (
@@ -170,7 +177,7 @@ const Quiz = () => {
                         ? "border-2 border-blue-500 bg-gray-300"
                         : "bg-gray-300 hover:bg-gray-400"
                     }`}
-                    onClick={() => setCurrentQuestionIndex(index)}
+                    onClick={() => handleProgressClick(index)}
                   >
                     {index + 1}
                   </button>
