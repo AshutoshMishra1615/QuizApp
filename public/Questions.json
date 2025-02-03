@@ -15,5 +15,38 @@
     "question": "Which language runs in a web browser?",
     "options": ["Java", "C", "Python", "JavaScript"],
     "correctOptionIndex": 3
+  },
+  {
+    "id": 2,
+    "question": "What does CSS stand for?",
+    "options": [
+      "Computer Style Sheets",
+      "Creative Style Sheets",
+      "Cascading Style Sheets",
+      "Colorful Style Sheets"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "id": 3,
+    "question": "Which front-end framework i used in this project",
+    "options": [
+      "Angular",
+      "numpy (I know i went multiverse)",
+      "not-React",
+      "React"
+    ],
+    "correctOptionIndex": 4
+  },
+  {
+    "id": 4,
+    "question": "Who ise the President of WebWiz",
+    "options": [
+      "swastik bhaiya",
+      "ritesh Bhaiya",
+      "ayush Bhaiya",
+      "Sanket bhaiya"
+    ],
+    "correctOptionIndex": 4
   }
 ]

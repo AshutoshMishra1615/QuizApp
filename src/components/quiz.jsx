@@ -107,7 +107,7 @@ const Quiz = () => {
   return (
     <div className="flex justify-center items-center h-screen p-10 bg-gray-800">
       {quizCompleted ? (
-        <div className="flex flex-col justify-center items-center m-auto mt-10 p-6 text-center w-[600px] h-auto border-2 rounded-xl">
+        <div className="flex flex-col justify-center items-center m-auto mt-10 p-6 text-center w-[600px] h-auto border-2 rounded-xl bg-gray-300">
           <h1 className="text-3xl font-bold">Quiz Completed!</h1>
           <p className="text-lg mt-4">
             Final Score: {score}/{questions.length * 4}
@@ -120,7 +120,7 @@ const Quiz = () => {
           </button>
         </div>
       ) : (
-        <div className="flex flex-col justify-center m-auto mt-16 p-4 text-center w-[600px] h-auto border-2 rounded-xl bg-gray-400">
+        <div className="flex flex-col justify-center m-auto mt-16 p-4 text-center w-[500px] h-auto border-2 rounded-xl bg-gray-300">
           <h1 className="text-2xl font-bold">Quiz</h1>
           <div className="flex justify-between my-3">
             <div className="text-lg">Score: {score}</div>
@@ -139,18 +139,18 @@ const Quiz = () => {
                   (option, index) => (
                     <div
                       key={index}
-                      className={`p-3 border rounded-lg cursor-pointer text-lg font-medium transition-all duration-200 ${
+                      className={`p-3 border rounded-lg text-lg font-medium transition-all duration-200 ${
                         selectedOption !== null
                           ? index ===
                             questions[currentQuestionIndex].correctOptionIndex
                             ? "bg-green-500 text-white"
                             : index === selectedOption
                             ? "bg-red-500 text-white"
-                            : "bg-gray-200"
+                            : "bg-gray-400 opacity-50"
                           : attemptedQuestions.has(currentQuestionIndex)
-                          ? "bg-gray-200 cursor-not-allowed"
-                          : "hover:bg-gray-300"
-                      }`}
+                          ? "bg-gray-400 opacity-50 cursor-not-allowed"
+                          : "hover:bg-gray-200 cursor-pointer"
+                      } `}
                       onClick={() => handleOptionClick(index)}
                     >
                       {option}
@@ -159,7 +159,6 @@ const Quiz = () => {
                 )}
               </div>
 
-              {/* Bottom Question Navigation */}
               <div className="flex justify-center mt-4 space-x-2">
                 {questions.map((_, index) => (
                   <button
